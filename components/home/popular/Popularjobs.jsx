@@ -10,7 +10,7 @@ import useFetch from '../../../hook/useFetch'
 const Popularjobs = () => {
     const router = useRouter()
 
-    const {data, loading, error} = useFetch('search', {
+    const {data, loading} = useFetch('search', {
         query: 'Python developer in Texas, USA',
         page: '1',
         num_pages: '1'
@@ -26,10 +26,8 @@ const Popularjobs = () => {
             </View>
 
             <View style={styles.cardsContainer}>
-                {loading ? (
+                {loading && !data ? (
                     <ActivityIndicator size="large" color={COLORS.primary}/>
-                ) : error ? (
-                    <Text>Something went wrong</Text>
                 ) : (
                     <FlatList data={data} renderItem={
                         ({item}) => (
