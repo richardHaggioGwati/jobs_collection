@@ -36,6 +36,12 @@ web-build/
 testem.log
 /typings
 
-# System files
+# System files 0
 .DS_Store
 Thumbs.db
+
+# Secrets
+*.env
+
+# unknown folder
+%ProgramData%
