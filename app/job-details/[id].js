@@ -1,6 +1,6 @@
 import {ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, View} from 'react-native'
 import {useRouter, useLocalSearchParams, Stack} from "expo-router";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {JobAbout, JobFooter, JobTabs} from "../../components";
 import useFetch from "../../hook/useFetch";
 import {COLORS, SIZES} from "../../constants";
@@ -15,7 +15,7 @@ const JobDetail = () => {
 
     const params = useLocalSearchParams()
     const router = useRouter()
-    const [refreshing, SetRefreshing] = useState(false)
+    const [refreshing, setRefreshing] = useState(false)
     const [activeTab, setActiveTab] = useState(tabs[0])
 
     const {data, loading, refetch} = useFetch('job-details', {
@@ -36,8 +36,11 @@ const JobDetail = () => {
         }
     }
 
-    const onRefreshing = () => {
-    }
+    const onRefreshing = useCallback(() => {
+        setRefreshing(true)
+        refetch()
+        setRefreshing(false)
+    }, [])
 
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
