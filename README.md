@@ -19,7 +19,6 @@ These instructions will help you set up the project on your local machine for de
 ## Prerequisites
 
 - Node.js and npm installed on your machine.
-- Expo CLI installed globally:
 
 ## Cloning
 
@@ -50,6 +49,14 @@ Start the Expo development server:
 
 ```bash
 expo start
+```
+
+## Testing
+
+Test the app:
+
+```bash
+npm test -- --watch
 ```
 
 Scan the QR code with the Expo Go app on your mobile device or run in an emulator to view the app.
